@@ -13,7 +13,8 @@ Implementation of the  Differentially Private Pixelization (*Pix*) method from  
 ```markdown
 | dp_pixel.py 	# source code
 | demo.ipynb  	# demo results on Faces (AT&T), miniImageNet and Omniglot dataset
-| image_util.py # helper methods for loading datasets
+| image_util.py # helper methods
+| image_db.py   # dataset classes for loading images
 ```
 
 
