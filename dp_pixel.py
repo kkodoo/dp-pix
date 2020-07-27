@@ -9,7 +9,7 @@ Created on Wed Jul 22 14:42:15 2020
 import numpy as np
 from PIL import Image
 
-def add_laplace_noise(px_img, f_w, f_h, m=200, eps=0.01):
+def add_laplace_noise(px_img, f_w, f_h, m=200, eps=0.01, noise_factor=1):
     """
     Input:
         px_img: pixelated image
@@ -22,7 +22,7 @@ def add_laplace_noise(px_img, f_w, f_h, m=200, eps=0.01):
     """
     
     scale = (255 * m) / (f_w * f_h * eps)
-    noise =  np.random.laplace(loc=0, scale=scale, size=px_img.shape)
+    noise = noise_factor *  np.random.laplace(loc=0, scale=scale, size=px_img.shape)
     noisy_image = np.clip(px_img + noise, 0, 255)
     return noisy_image
 
@@ -63,7 +63,7 @@ def pixelate(img, target_w, target_h, f_w, f_h):
     
     return px
 
-def dp_pixelate(I, target_w, target_h, m, eps):
+def dp_pixelate(I, target_w, target_h, m, eps, noise_factor=1):
     """
     Input:
         I: Pillow image object
@@ -94,7 +94,7 @@ def dp_pixelate(I, target_w, target_h, m, eps):
     cropped_img = img[crop_h//2 : crop_h//2 + actual_h, crop_w//2 : crop_w//2 + actual_w]
     
     px_img = pixelate(cropped_img, target_w, target_h, f_w, f_h)
-    dp_px_img = add_laplace_noise(px_img, f_w, f_h, m, eps)
+    dp_px_img = add_laplace_noise(px_img, f_w, f_h, m, eps, noise_factor)
     dp_px_I = Image.fromarray(dp_px_img.astype(np.uint8))
     
     return dp_px_I
