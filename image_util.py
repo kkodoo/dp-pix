@@ -26,10 +26,10 @@ def display_image_grid(images, size=(12,12), titles=None, num_cols=4):
             ax.set_title(titles[i])
  
 
-def add_gaussian_noise(I, mean, stdev):
+def add_gaussian_noise(I, mean, stdev, noise_factor=1):
     img = np.asarray(I, dtype=np.float32)
     img = img / 255.0
-    gauss = np.random.normal(mean,stdev,img.shape)
+    gauss = noise_factor * np.random.normal(mean,stdev,img.shape)
     noisy_image = np.clip((img + gauss),0,1) * 255
     I_noisy = Image.fromarray(noisy_image.astype(np.uint8))
     return I_noisy
