@@ -8,14 +8,20 @@ Implementation of the  Differentially Private Pixelization (*Pix*) method from  
 
 ## Files
 
-
-
-```markdown
-| dp_pixel.py 	# source code
-| demo.ipynb  	# demo results on Faces (AT&T), miniImageNet and Omniglot dataset
-| image_util.py # helper methods
-| image_db.py   # dataset classes for loading images
-```
+📦dp-pix  
+ ┣ 📂notebooks   
+ ┃ ┣ 📜Demo.ipynb                   # demo results on Faces (AT&T), miniImageNet and Omniglot dataset  
+ ┃ ┣ 📜Pixelate Performance.ipynb   # comparing speed of pixelation of methods in pixelate.py  
+ ┃ ┗ 📜Ways to Pixelate.ipynb       # demo of methods in resize.py & pixelate.py  
+ ┣ 📂src  
+ ┃ ┣ 📜dataset.py                   # dataset classes for loading images    
+ ┃ ┣ 📜dp_pixel.py                  # source code for image pixelization with differential privacy  
+ ┃ ┣ 📜image_util.py                # helper methods  
+ ┃ ┣ 📜noise.py                     # methods for adding laplace or gaussian noise  
+ ┃ ┣ 📜pixelate.py                  # pixelation implemented using skimage, PyTorch and manually   
+ ┃ ┣ 📜resize.py                    # pad and crop methods  
+ ┃ ┗ 📜timer.py                     # to measure performance  
+ ┗ 📜README.md
 
 
 

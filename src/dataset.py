@@ -10,6 +10,7 @@ import os
 import random
 import numpy as np
 from PIL import Image
+from image_util import pillow_to_numpy
 
 data_path = {
 'omniglot': "/home/aparnami/Documents/GitHub/prototypical-noise/data/omniglot/data",
@@ -23,7 +24,6 @@ def choose_random_path(path):
     path = os.path.join(path, file)
     return path
 
-
 class Dataset:
     def __init__(self):
         self.data_dir = ''
@@ -33,9 +33,9 @@ class Dataset:
         pass 
     
     def load_images(self, n=16):
-         image_paths = set([self.get_random_image() for i in range(n)])
-         images = list(map(Image.open, image_paths))
-         return images
+        image_paths = set([self.get_random_image() for i in range(n)])
+        images = list(map(pillow_to_numpy, map(Image.open, image_paths)))
+        return images
 
 
 class OmniglotDataset(Dataset):
@@ -50,10 +50,8 @@ class OmniglotDataset(Dataset):
         return image
     
     def scale_up(self, image):
-        np_image = np.asarray(image, dtype=np.float32)
-        scaled = np_image * 255
-        image = Image.fromarray(scaled.astype(np.uint8))
-        return image
+        scaled = image * 255
+        return scaled
     
     def load_images(self, n=16):
         images = super().load_images(n)
@@ -75,7 +73,7 @@ class MiniImageNetDataset(Dataset):
 class FacesDataset(Dataset):
     def __init__(self):
         self.data_dir = data_path['faces']
-        self.scale = (92,112)
+        self.scale = (25,25)
         
     def get_random_image(self):
         person = choose_random_path(self.data_dir)
