@@ -15,11 +15,15 @@ Implementation of the  Differentially Private Pixelization (*Pix*) method from  
  ┃ ┣ 📜Ways to Pixelate.ipynb .............. # demo of methods in resize.py & pixelate.py  
  ┃ ┗ 📜Non-Private Pixelation.ipynb ....... # demo of np_pixel.py  (Image Pixelation with Random Noise)  
  ┣ 📂src  
- ┃ ┣ 📜dataset.py .............. # dataset classes for loading images from AT&T Faces, Omniglot and miniImageNet.
+ ┃ ┣ 📜dataset.py .............. # dataset classes for loading images from AT&T Faces, Omniglot and miniImageNet  
  ┃ ┣ 📜dp_pixel.py ............ # source code for image pixelization with differential privacy  
  ┃ ┣ 📜image_util.py ......... # helper methods  
  ┃ ┣ 📜noise.py ................. # methods for adding laplace or gaussian noise  
+ ┃ ┣ 📜np_pixel.py ............ # source code for image pixelization with random noise  
  ┃ ┣ 📜pixelate.py ............. # pixelation implemented using skimage, PyTorch and manually   
+ ┃ ┣ 📜resize.py ................ # pad and crop methods  
+ ┃ ┣ 📜scale.py ................ # methods for down sampling an image to a given size  
+ ┃ ┗ 📜timer.py ..................  # to measure performance   
  ┗ 📜README.md
 
 
