@@ -42,7 +42,7 @@ def dp_pixelate(img, target_h, target_w, m, eps,
 
     resized_img, f_h, f_w = resize_f(img, target_h, target_w)
     px_img = pixelate_f(resized_img, f_h, f_w)
-    scale = (255 * m) / (f_h * f_w * eps)
+    scale = (1 * m) / (f_h * f_w * eps)
     dp_px_img = Noise.add_laplace_noise(px_img, 0, scale, noise_factor=noise_factor)
    
     if flag:
