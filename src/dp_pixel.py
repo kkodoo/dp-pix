@@ -7,9 +7,9 @@ Created on Wed Jul 22 14:42:15 2020
 """
 
 import numpy as np
-from pixelate import Pixelate
-from noise import Noise
-from resize import Resize
+from .pixelate import Pixelate
+from .noise import Noise
+from .resize import Resize
 
 def dp_pixelate(img, target_h, target_w, m, eps, 
                 noise_factor = 1, 

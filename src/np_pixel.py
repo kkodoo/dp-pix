@@ -1,6 +1,6 @@
 import numpy as np
-from scale import Scale
-from noise import Noise
+from .scale import Scale
+from .noise import Noise
 
 def np_pixelate(img, target_h, target_w, control, 
                 noise_factor = 1, 

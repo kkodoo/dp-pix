@@ -10,7 +10,7 @@ import os
 import random
 import numpy as np
 from PIL import Image
-from image_util import pillow_to_numpy
+from .util import pillow_to_numpy
 
 data_path = {
 'omniglot': "/home/aparnami/Documents/GitHub/prototypical-noise/data/omniglot/data",
