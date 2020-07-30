@@ -24,8 +24,8 @@ def dp_pixelate(img, target_h, target_w, m, eps,
         m: number of pixels to add noise to (see paper)
         noise_factor: scale the noise by this factor (default: 1 i.e., don't scale).
         resize_f: Function to use in order to fit the target dimensions correctly. 
-            iu.pad_image: This function pads 0's at the image boundary. (default)
-            iu.crop_image: This function crops boundary pixels.
+            Resize.pad_image: This function pads 0's at the image boundary. (default)
+            Resize.crop_image: This function crops boundary pixels.
         pixelate_f: Function to use for pixelating the image. 
             All the methods below compute same result. They just differ in performance.
                 Pixelate.sequential: Slowest
