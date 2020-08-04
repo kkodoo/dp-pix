@@ -39,12 +39,17 @@ def dp_pixelate(img, target_h, target_w, m, eps,
     if len(img.shape) == 2:
         img = np.expand_dims(img, axis=2)
         flag = True
-
+    
+    num_channels = img.shape[2]
     resized_img, f_h, f_w = resize_f(img, target_h, target_w)
     px_img = pixelate_f(resized_img, f_h, f_w)
-    scale = (1 * m) / (f_h * f_w * eps)
-    dp_px_img = Noise.add_laplace_noise(px_img, 0, scale, noise_factor=noise_factor)
-   
+    
+    # distributing eps among channels by eps/num_channels
+    scale = (1 * m * num_channels) / (f_h * f_w * eps) 
+    dp_px_img = np.zeros(px_img.shape)
+    for i in range(num_channels):
+        dp_px_img[:,:,i] = Noise.add_laplace_noise(px_img[:,:,i], 0, scale, noise_factor=noise_factor)
+    
     if flag:
         dp_px_img = np.squeeze(dp_px_img)
 
