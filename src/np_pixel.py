@@ -31,8 +31,11 @@ def np_pixelate(img, target_h, target_w, control,
 
    
     scaled_img = scale_f(img, target_h, target_w)
-    np_px_img = noise_f(scaled_img, 0, control, noise_factor=noise_factor)
-   
+    np_px_img = np.zeros(scaled_img.shape)
+    num_channels = np_px_img.shape[2]
+    for i in range(num_channels):
+         np_px_img[:,:,i] = noise_f(scaled_img[:,:,i], 0, control, noise_factor=noise_factor)
+
     if flag:
         np_px_img = np.squeeze(np_px_img)
 

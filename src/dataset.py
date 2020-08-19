@@ -50,7 +50,7 @@ class OmniglotDataset(Dataset):
         return image
     
     def scale_up(self, image):
-        scaled = image * 255
+        scaled = (1-image) * 255
         return scaled
     
     def load_images(self, n=16):
